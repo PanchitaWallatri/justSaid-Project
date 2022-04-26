@@ -54,4 +54,10 @@ class Post(models.Model):
 # Create your models here.
 
 class Comment(models.Model):
-    post =
+    post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    boby = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '%s - %s' % (self.post.title, self.name)

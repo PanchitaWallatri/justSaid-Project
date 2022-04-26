@@ -50,6 +50,28 @@ post auther : {{ post.author.id }}
     {% endif %} - {{ total_likes }} likes </small>
 
 <br /><br />
+<hr>
+
+<h2>Comments...</h2>
+<br/>
+{% if not post.comments.all %}
+    No Comments Yet...<a href="#">
+    Add One</a>
+{% else %}
+        {% for comment in post.comments.all %}
+            <strong>
+                {{ comment.name }} -
+                {{ comment.date_added }}
+            </strong>
+            <br/>
+            {{ comment.boby }}
+            <br/><br/>
+            
+        {% endfor %}
+
+{% endif %}
+
+<br /><br />
 <!-- data author's profile -->
 <div class="card mb-3" ">
     <div class=" row g-0">
